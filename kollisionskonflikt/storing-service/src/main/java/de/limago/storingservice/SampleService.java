@@ -24,13 +24,23 @@ public class SampleService {
     }
 
     public void updateFirst(long id) {
-        SampleEntity entity = repo.findById(id).orElseThrow(()->new NotFoundException("First gescheitert"));
-        entity.setFirst("OK");
+        try {
+            SampleEntity entity = repo.findById(id).orElseThrow(()->new NotFoundException("First gescheitert"));
+            entity.setFirst("OK");
+        } catch (Exception e) {
+            System.out.println("updateFirst: " + e.getClass().getSimpleName() + " " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     public void updateSecond(long id) {
-        SampleEntity entity = repo.findById(id).orElseThrow(()->new NotFoundException("Second gescheitert"));
-        entity.setSecond("OK");
+        try {
+            SampleEntity entity = repo.findById(id).orElseThrow(()->new NotFoundException("First gescheitert"));
+            entity.setSecond("OK");
+        } catch (Exception e) {
+            System.out.println("updateSecond: " + e.getClass().getSimpleName() + " " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
 }
