@@ -1,9 +1,11 @@
 package de.limago.storingservice;
 
+import de.limago.storingservice.events.DataEvent;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.webjars.NotFoundException;
 
 @Service
 @AllArgsConstructor
@@ -15,9 +17,18 @@ public class SampleService {
 
     public void save(SampleEntity entity) {
         repo.save(entity);
-        bridge.send("persistiert-out-0",entity );
+        DataEvent<SampleEntity> event = DataEvent.<SampleEntity>builder().payload(entity).build();
+        bridge.send("persistiert-out-0",event );
     }
 
+    public void updateFirst(long id) {
+        SampleEntity entity = repo.findById(id).orElseThrow(()->new NotFoundException("First gescheitert"));
+        entity.setFirst("OK");
+    }
 
+    public void updateSecond(long id) {
+        SampleEntity entity = repo.findById(id).orElseThrow(()->new NotFoundException("Second gescheitert"));
+        entity.setSecond("OK");
+    }
 
 }

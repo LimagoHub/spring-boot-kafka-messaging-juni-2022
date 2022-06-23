@@ -1,4 +1,4 @@
-package de.limago.storingservice;
+package de.limago.firstsupportingservice;
 
 import lombok.*;
 
@@ -13,14 +13,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 
-@Entity
-@Table(name = "tbl_kredit_antraege")
 public class SampleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
 
-    @Version
+
     private long version;
 
     @Builder.Default
