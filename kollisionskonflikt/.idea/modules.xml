@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/first-supporting-service/first-supporting-service.iml" filepath="$PROJECT_DIR$/first-supporting-service/first-supporting-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kollisionskonflikt.iml" filepath="$PROJECT_DIR$/.idea/kollisionskonflikt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/second-supporting-service/second-supporting-service.iml" filepath="$PROJECT_DIR$/second-supporting-service/second-supporting-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storing-service/storing-service.iml" filepath="$PROJECT_DIR$/storing-service/storing-service.iml" />
+    </modules>
+  </component>
+</project>
