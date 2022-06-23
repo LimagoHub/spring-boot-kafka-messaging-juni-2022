@@ -4,12 +4,13 @@ import de.limago.storingservice.events.DataEvent;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.webjars.NotFoundException;
 
 @Service
 @AllArgsConstructor
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public class SampleService {
 
     private final SampleRepo repo;
