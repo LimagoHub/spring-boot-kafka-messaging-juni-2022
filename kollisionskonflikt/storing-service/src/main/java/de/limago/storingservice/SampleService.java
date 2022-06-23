@@ -10,7 +10,7 @@ import org.webjars.NotFoundException;
 
 @Service
 @AllArgsConstructor
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class SampleService {
 
     private final SampleRepo repo;
