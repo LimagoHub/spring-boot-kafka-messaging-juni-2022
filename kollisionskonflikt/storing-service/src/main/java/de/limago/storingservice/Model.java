@@ -1,9 +1,14 @@
-package de.limago.secondsupportingservice;
+package de.limago.storingservice;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
 import java.time.LocalDateTime;
+import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -12,11 +17,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+public class Model {
 
-
-public class SampleEntity {
-
-    private String id;
+    @Builder.Default
+    private String id = UUID.randomUUID().toString();
 
 
     private long version;
@@ -28,5 +32,4 @@ public class SampleEntity {
     private String second = "empty";
     @Builder.Default
     private LocalDateTime timestamp = LocalDateTime.now();
-
 }

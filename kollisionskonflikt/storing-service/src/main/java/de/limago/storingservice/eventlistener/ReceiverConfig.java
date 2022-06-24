@@ -1,6 +1,7 @@
 package de.limago.storingservice.eventlistener;
 
 
+import de.limago.storingservice.SampleHandler;
 import de.limago.storingservice.SampleService;
 import de.limago.storingservice.events.DataEvent;
 import lombok.extern.slf4j.Slf4j;
@@ -16,19 +17,19 @@ public class ReceiverConfig {
 
 
     @Bean
-    public Consumer<DataEvent<Long>> first(final SampleService service) {
+    public Consumer<DataEvent<String>> first(final SampleHandler handler) {
         return event -> {
 
-                service.updateFirst(event.getPayload());
+                handler.handleUpdateFirst(event.getPayload());
 
         };
     }
 
     @Bean
-    public Consumer<DataEvent<Long>> second(final SampleService service) {
+    public Consumer<DataEvent<String>> second(final SampleHandler handler) {
         return event -> {
 
-            service.updateSecond(event.getPayload());
+            handler.handleUpdateSecond(event.getPayload());
 
         };
     }

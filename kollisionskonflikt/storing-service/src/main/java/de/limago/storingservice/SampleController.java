@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class SampleController {
 
-    private final SampleService service;
+    private final SampleHandler handler;
 
     @GetMapping(path="send")
     public String send() {
-        service.save(new SampleEntity());
+        handler.handleSave(new Model());
         return "OK";
     }
 }

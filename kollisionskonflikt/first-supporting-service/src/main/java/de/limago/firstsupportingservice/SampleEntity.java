@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 
 public class SampleEntity {
 
-    private long id;
+    private String id;
 
 
     private long version;

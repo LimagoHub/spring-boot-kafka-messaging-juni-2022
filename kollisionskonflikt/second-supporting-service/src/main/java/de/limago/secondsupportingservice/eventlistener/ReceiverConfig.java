@@ -17,10 +17,10 @@ public class ReceiverConfig {
 
 
     @Bean
-    public Function<DataEvent<SampleEntity>, DataEvent<Long>> receiver() {
+    public Function<DataEvent<SampleEntity>, DataEvent<String>> receiver() {
         return event -> {
-
-                DataEvent<Long> outgoing = DataEvent.<Long>builder().payload(event.getPayload().getId()).build();
+            System.out.println("Second receiving data");
+                DataEvent<String> outgoing = DataEvent.<String>builder().payload(event.getPayload().getId()).build();
                 return outgoing;
         };
     }

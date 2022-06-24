@@ -1,6 +1,21 @@
 package de.limago.storingservice;
 
-import org.springframework.data.repository.CrudRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 
-public interface SampleRepo extends CrudRepository<SampleEntity, Long> {
+import java.util.Optional;
+
+@Repository
+@AllArgsConstructor
+public class SampleRepo {
+
+    private final SampleRepoRaw repoRaw;
+    private final ModelToEntityMapper mapper;
+    public void save(Model model) {
+        repoRaw.save(mapper.convert(model));
+    }
+
+    public Optional<Model> findById(String s) {
+        return repoRaw.findById(s).map(mapper::convert);
+    }
 }
